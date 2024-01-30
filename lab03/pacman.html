@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacman</title>
+</head>
+<body>
+
+<script>
+  function createGame(n) {
+
+    const gameBoard = Array(n).fill(".");
+
+    const pacmanIndex = Math.floor(Math.random() * n);
+    const ghostIndex = (pacmanIndex + 1) % n;
+    const fruitIndex = (pacmanIndex + 2) % n;
+
+    gameBoard[pacmanIndex] = "C";
+    gameBoard[ghostIndex] = "^";
+    // just pour ajouter un fruit avec le fantomee
+    gameBoard[ghostIndex] += ".";
+
+    gameBoard[fruitIndex] = "@";
+
+    return gameBoard;
+  }
+
+  const gameResult = createGame(15);
+  console.log(gameResult);
+
+  const resultContainer = document.createElement("div");
+  resultContainer.textContent = JSON.stringify(gameResult);
+  document.body.appendChild(resultContainer);
+</script>
+
+</body>
+</html>
